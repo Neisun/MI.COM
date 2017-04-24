@@ -6,6 +6,7 @@
     <topBanner></topBanner>
     <topSub></topSub>
     <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
+    <goods></goods>
   </div>
 </template>
 <script>
@@ -15,6 +16,7 @@ import topHeader from './components/TopHeader.vue'
 import topBanner from './components/TopBanner.vue'
 import topSub from './components/TopSub.vue'
 import starGoods from './components/StarGoods.vue'
+import goods from './components/Goods.vue'
 export default {
   name: 'app',
   components: {
@@ -23,7 +25,8 @@ export default {
     topHeader,
     topBanner,
     topSub,
-    starGoods
+    starGoods,
+    goods
   },
   data:function () {
     return {
