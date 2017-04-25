@@ -4,7 +4,7 @@
     <h2 class="title">{{match.title}}</h2>
     <div class="nav">
       <ul class="nav-list">
-        <li class="nav-list-item" v-for="(item,index) in match.nav" :key="index" :class="{active:activeStatus===index}" @mouseenter="evtEnterActive(index)">
+        <li class="nav-list-item" v-for="(item,index) in match.nav" :key="index" :class="{active:activeStatus===item.type}" @mouseenter="evtEnterActive(item.type,item.name,item.linkUrl)">
           {{item.name}}
         </li>
       </ul>
@@ -56,33 +56,33 @@
             </div>
           </li>
           <ul class="component-left-list-item-small">
-            <li class="component-right-list-last-item" v-for="(item,index) in lastGoods" :key="elem.key">
+            <li class="component-right-list-last-item">
               <div class="figure">
-                <a :href="item.sourceUrl" class="figure-link">
-                  <img :src="item.imgUrl" alt="item.title" class="figure-pic">
+                <a :href="lastGoods.sourceUrl" class="figure-link">
+                  <img :src="lastGoods.imgUrl" alt="lastGoods.title" class="figure-pic">
                 </a>
               </div>
               <h3 class="title">
-                <a :href="item.sourceUrl" class="title-link">
-                  {{item.title}}
+                <a :href="lastGoods.sourceUrl" class="title-link">
+                  {{lastGoods.title}}
                 </a>
               </h3>
               <p class="price">
                 <span class="num">
-                  {{item.price}}元
+                  {{lastGoods.price}}元
                 </span>
-                <span class="old-price" v-if="item.discountType==='discount'">
-                  {{item.oldPrice}}
+                <span class="old-price" v-if="lastGoods.discountType==='discount'">
+                  {{lastGoods.oldPrice}}
                 </span>
               </p>
             </li>
             <li class="component-right-list-item-more">
               <div class="figure-more">
-                <a href="#">
+                <a :href="linkActiveUrl" target="_blank">
                   <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
-              <a href="#" class="more-link">浏览更多<small>热门</small></a>
+              <a :href="linkActiveUrl" class="more-link" target="_blank">浏览更多<small>{{linkMoreText}}</small></a>
             </li>
           </ul>
         </ul>
@@ -96,24 +96,31 @@ export default {
   name: "goods-component",
   data: function data() {
     return {
-      activeStatus: 0,
+      activeStatus: 'hot',
+      linkMoreText:'热门',
+      linkActiveUrl:'//list.mi.com/dapei',
       match: {
         title: '搭配',
         nav: [{
             name: '热门',
-            type:'hot'
+            type:'hot',
+            linkUrl:'//list.mi.com/dapei'
           },
           {
             name: '耳机音响',
-            type:'earphone'
+            type:'earphone',
+            linkUrl:'//list.mi.com/17'
           },
           {
             name: '电源',
-            type:'power'
+            type:'power',
+            linkUrl:'//list.mi.com/11'
+
           },
           {
             name: '电池储存卡',
-            type:'battery'
+            type:'battery',
+            linkUrl:'//list.mi.com/135'
           }
         ],
         rightGoods: [
@@ -202,16 +209,18 @@ export default {
   },
   computed:{
     lastGoods:function () {
-      if (match.hot[match.hot.length-1]) {
-        return match.hot[match.hot.length-1]
+      if (this.match.hot[this.match.hot.length-1]) {
+        return this.match.hot[this.match.hot.length-1]
       }else {
         return null;
       }
     }
   },
   methods: {
-    evtEnterActive: function(key) {
-      this.activeStatus = key
+    evtEnterActive: function(type,text,url) {
+      this.activeStatus = type
+      this.linkMoreText = text
+      this.linkActiveUrl = url
     }
   }
 }
