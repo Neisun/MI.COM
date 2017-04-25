@@ -35,7 +35,7 @@
               <span class="old-price">
                 {{ item.oldPrice }}
               </span>
-</template>
+            </template>
           </p>
           <div class="flag" :class="item.discountType">
             {{item.discountContent}}

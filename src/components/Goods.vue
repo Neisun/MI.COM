@@ -2,15 +2,18 @@
   <div class="goods">
     <div class="container">
       <goodsHardWare></goodsHardWare>
+      <goodsComponent></goodsComponent>
     </div>
   </div>
 </template>
 <script>
 import goodsHardWare from './commonVue/GoodsHardWare.vue'
+import goodsComponent from './commonVue/GoodsComponent.vue'
 export default {
   name: "goods",
   components: {
-    goodsHardWare
+    goodsHardWare,
+    goodsComponent
   },
   data: function data() {
     return {
