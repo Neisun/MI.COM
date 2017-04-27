@@ -1,23 +1,98 @@
 <template>
-  <div class="goods">
-    <div class="container">
-      <goodsHardWare></goodsHardWare>
-      <goodsComponent v-for="(item,index) in goodsData" :key="index" :componentGoodsData="item"></goodsComponent>
-    </div>
+<div class="goods">
+  <div class="container">
+    <goodsHardWare></goodsHardWare>
+    <goodsComponent v-for="(item,index) in goodsData" :key="index" :componentGoodsData="item"></goodsComponent>
+    <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
   </div>
+</div>
 </template>
 <script>
 import goodsHardWare from './commonVue/GoodsHardWare.vue'
 import goodsComponent from './commonVue/GoodsComponent.vue'
+import starGoods from '../components/StarGoods.vue'
 export default {
   name: "goods",
   components: {
     goodsHardWare,
-    goodsComponent
+    goodsComponent,
+    starGoods
   },
   data: function data() {
     return {
-      goodsData:{
+      starGoodsTitle: '小米明星单品',
+      starGoodsList: [{
+          name: '小米5s Plus',
+          desc: '骁龙821旗舰处理器，轻薄金属机身',
+          price: '2299元起',
+          sourceUrl: '//item.mi.com/product/10000025.html',
+          imgUrl: 'http://i3.mifile.cn/a4/e991f1e2-20d8-40c3-bf1d-012b122c986b'
+        },
+        {
+          name: '红米Note4  4GB+64GB',
+          desc: '4月10日-4月30日，领券减100元',
+          price: '1399元',
+          sourceUrl: '//item.mi.com/buyphone/note4/',
+          imgUrl: 'http://i3.mifile.cn/a4/f24c0788-e6c2-4139-8f53-c0d4524eda09'
+        },
+        {
+          name: '小米MIX',
+          desc: '6.4英寸全面屏，全陶瓷机身',
+          price: '3499元起',
+          sourceUrl: '//item.mi.com/product/10000022.html',
+          imgUrl: '//i3.mifile.cn/a4/xmad_14926862610682_UhkfS.png'
+        },
+        {
+          name: '小米电视4A 49英寸 标准版',
+          desc: '4月26日-5月2日，下单立减200元',
+          price: '2599元',
+          sourceUrl: '//item.mi.com/buy/mitv4a-49',
+          imgUrl: '//i3.mifile.cn/a4/xmad_14926528960147_wJMsC.png'
+        },
+        {
+          name: '小米笔记本',
+          desc: '更轻更薄，像杂志一样随身携带',
+          price: '3599元起',
+          sourceUrl: '//item.mi.com/buymibook/air',
+          imgUrl: 'http://i3.mifile.cn/a4/725a37e3-78b7-4298-8098-c40097bf179d'
+        },
+        {
+          name: '10000mAh小米移动电源2',
+          desc: '双向快充，高密度锂聚合物电芯',
+          price: '79元',
+          sourceUrl: '//www.mi.com/battery2/',
+          imgUrl: '//i3.mifile.cn/a4/xmad_14917453512947_AmXkT.png'
+        },
+        {
+          name: '米家iHealth血压计',
+          desc: '爸妈上手就会用的智能血压计',
+          price: '399元',
+          sourceUrl: '//www.mi.com/ihealth2/',
+          imgUrl: 'http://i3.mifile.cn/a4/c8c48bbb-5c57-4fa6-9bea-7abd7f24a13a'
+        },
+        {
+          name: '米家 LED 智能台灯',
+          desc: '无可视频闪，亮度色温无级调节',
+          price: '169元',
+          sourceUrl: '//www.mi.com/mjsmartlamp/',
+          imgUrl: 'http://i3.mifile.cn/a4/0906bec7-68ad-41e9-9617-fb6550725a85'
+        },
+        {
+          name: '米家扫地机器人',
+          desc: '智能路径规划，扫得干净扫得快',
+          price: '1699元',
+          sourceUrl: '//www.mi.com/roomrobot/',
+          imgUrl: 'http://i3.mifile.cn/a4/848def18-47d9-4ca0-8822-c2ac61b83779'
+        },
+        {
+          name: '小米路由器3',
+          desc: '更快更强，不止四天线',
+          price: '149元',
+          sourceUrl: '//www.mi.com/miwifi3/',
+          imgUrl: 'http://i3.mifile.cn/a4/de35852a-1be5-4ef5-846f-dcdd2efcfea6'
+        }
+      ],
+      goodsData: {
         match: {
           title: '搭配',
           nav: [{
@@ -384,9 +459,9 @@ export default {
               rank: '2.4万人评价',
               review: '还行就是加上运费性价比不高啊',
               author: ' 来自于 49307341 的评价 ',
-              discountType:'discount',
-              discountContent:'享6折',
-              oldPrice:'49'
+              discountType: 'discount',
+              discountContent: '享6折',
+              oldPrice: '49'
             },
             {
               sourceUrl: '//item.mi.com/1164400025.html',
@@ -466,9 +541,9 @@ export default {
               rank: '1592人评价',
               review: '官方原装的就是好。包得严实。要是能出个钢化膜就好了。...',
               author: ' 来自于 Andriy 的评价 ',
-              discountType:'discount',
-              discountContent:'享6折',
-              oldPrice:'19'
+              discountType: 'discount',
+              discountContent: '享6折',
+              oldPrice: '19'
             },
             {
               sourceUrl: '//item.mi.com/1163900027.html',
@@ -566,16 +641,16 @@ export default {
               rank: '2812人评价',
               review: '高大威猛，玉树临风，人见人爱，花见花开的的我拿到此神...',
               author: ' 来自于 看破红尘 的评价 ',
-              discountType:'discount',
-              discountContent:'享6折',
-              oldPrice:'19.9'
+              discountType: 'discount',
+              discountContent: '享6折',
+              oldPrice: '19.9'
             },
             {
               sourceUrl: '//item.mi.com/1161600029.html',
               imgUrl: '//i1.mifile.cn/a1/T1y7JQBbCT1RXrhCrK!220x220.jpg',
               title: '小米Max 标准高透贴膜',
               price: '19',
-              rank:'1.3万人评价',
+              rank: '1.3万人评价',
               review: '手机屏幕都档不完，感觉一元钱一张都贵',
               author: ' 来自于 刘大洪 的评价 '
             },
@@ -696,8 +771,7 @@ export default {
               imgUrl: '//i3.mifile.cn/a4/xmad_1493109150882_opGFm.jpg'
             },
           ],
-          hot:[
-            {
+          hot: [{
               sourceUrl: '//www.mi.com/mj-smartshoes/',
               imgUrl: '//i1.mifile.cn/a1/pms_1490949492.24196486!220x220.jpg',
               title: '米家运动鞋(智能版) 男款',
@@ -705,8 +779,8 @@ export default {
               rank: '3877人评价',
               review: '鞋子超好啊……很轻，穿着很舒服。跑步时减震效果不错，...',
               author: ' 来自于 打呼的蚂蚁 的评价 ',
-              discountType:'new',
-              discountContent:'新品'
+              discountType: 'new',
+              discountContent: '新品'
             },
             {
               sourceUrl: '//item.mi.com/1164700020.html',
@@ -725,9 +799,9 @@ export default {
               rank: '5170人评价',
               review: '绝对高级的样子。比想象的要好',
               author: ' 来自于 周忠庆 的评价 ',
-              discountType:'discount',
-              discountContent:'享9.4折',
-              oldPrice:'159'
+              discountType: 'discount',
+              discountContent: '享9.4折',
+              oldPrice: '159'
             },
             {
               sourceUrl: '//item.mi.com/1170200014.html',
@@ -772,8 +846,7 @@ export default {
               price: '169'
             },
           ],
-          clothes:[
-            {
+          clothes: [{
               sourceUrl: '//item.mi.com/1170800047.html',
               imgUrl: '//i1.mifile.cn/a1/pms_1489482572.28451512!220x220.jpg',
               title: '米兔图案圆领短袖T恤 男款',
@@ -843,8 +916,7 @@ export default {
               price: '49'
             },
           ],
-          mitu:[
-            {
+          mitu: [{
               sourceUrl: '//item.mi.com/1163200035.html',
               imgUrl: '//i1.mifile.cn/a1/pms_1470896116.76978423!220x220.jpg',
               title: '60cm柔软米兔抱枕',
@@ -914,8 +986,7 @@ export default {
               price: '49'
             },
           ],
-          life:[
-            {
+          life: [{
               sourceUrl: '//item.mi.com/1164600021.html',
               imgUrl: '//i1.mifile.cn/a1/pms_1480477598.47892154!220x220.jpg',
               title: '米家中性笔专用笔芯',
@@ -985,8 +1056,7 @@ export default {
               price: '19'
             },
           ],
-          bags:[
-            {
+          bags: [{
               sourceUrl: '//item.mi.com/1153700020.html',
               imgUrl: '//i3.mifile.cn/a4/T1RRCjBKJv1RXrhCrK.jpg',
               title: '90分旅行箱 20寸',
@@ -1069,14 +1139,14 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .goods{
+.goods {
     width: 100%;
     height: auto;
     background: #f5f5f5;
     padding-top: 60px;
-    .container{
-      width: 1226px;
-      margin: 0 auto;
+    .container {
+        width: 1226px;
+        margin: 0 auto;
     }
-  }
+}
 </style>
