@@ -4,6 +4,8 @@
     <goodsHardWare></goodsHardWare>
     <goodsComponent v-for="(item,index) in goodsData" :key="index" :componentGoodsData="item"></goodsComponent>
     <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
+    <hotRemark></hotRemark>
+    <goodsContent></goodsContent>
   </div>
 </div>
 </template>
@@ -11,16 +13,20 @@
 import goodsHardWare from './commonVue/GoodsHardWare.vue'
 import goodsComponent from './commonVue/GoodsComponent.vue'
 import starGoods from '../components/StarGoods.vue'
+import hotRemark from './commonVue/HotRemark.vue'
+import goodsContent from './commonVue/GoodsContent.vue'
 export default {
   name: "goods",
   components: {
     goodsHardWare,
     goodsComponent,
-    starGoods
+    starGoods,
+    hotRemark,
+    goodsContent
   },
   data: function data() {
     return {
-      starGoodsTitle: '小米明星单品',
+      starGoodsTitle: '为你推荐',
       starGoodsList: [{
           name: '小米5s Plus',
           desc: '骁龙821旗舰处理器，轻薄金属机身',
