@@ -3,32 +3,32 @@
   <h2 class="title" :class="goodsContentSlideData.type">{{goodsContentSlideData.title}}</h2>
   <div class="slide-wrap">
     <span class="slide-prev" @click="slidePrev()">
-        <i class="fa fa-chevron-left"></i>
-      </span>
+      <i class="fa fa-chevron-left"></i>
+    </span>
     <span class="slide-next" @click="slideNext(goodsContentSlideData.list.length)">
-        <i class="fa fa-chevron-right"></i>
-      </span>
+      <i class="fa fa-chevron-right"></i>
+    </span>
     <ul class="sub-content" :style="{'margin-left': currPage * (-296) +'px'}">
       <li class="content-item" v-for="(good,index) in goodsContentSlideData.list" :key="index">
         <template v-if="good.type===1">
-            <a :href="good.sourceUrl" target="_blank">
-              <h1 class="subTitle">{{good.title}}</h1>
-              <p class="desc">{{good.desc}}</p>
-              <p class="price">{{good.price}}</p>
-              <img :src="good.imgUrl" :alt="good.title" class="content-img">
-            </a>
-          </template>
+          <a :href="good.sourceUrl" target="_blank">
+            <h1 class="subTitle">{{good.title}}</h1>
+            <p class="desc">{{good.desc}}</p>
+            <p class="price">{{good.price}}</p>
+            <img :src="good.imgUrl" :alt="good.title" class="content-img">
+          </a>
+        </template>
         <template v-if="good.type===2">
-            <a :href="good.sourceUrl" target="_blank">
-              <h1 class="subTitle">{{good.title}}</h1>
-              <p class="desc">{{good.desc1}}</br>{{good.desc2}}</p>
-              <p class="price">{{good.price}}</p>
-              <a :href="good.sourceUrl">
-                <p class="btn-txt" :class="goodsContentSlideData.type">{{good.btnTxt}}</p>
-              </a>
-              <img :src="good.imgUrl" :alt="good.title" class="content-img">
+          <a :href="good.sourceUrl" target="_blank">
+            <h1 class="subTitle">{{good.title}}</h1>
+            <p class="desc">{{good.desc1}}</br>{{good.desc2}}</p>
+            <p class="price">{{good.price}}</p>
+            <a :href="good.sourceUrl">
+              <p class="btn-txt" :class="goodsContentSlideData.type">{{good.btnTxt}}</p>
             </a>
-          </template>
+            <img :src="good.imgUrl" :alt="good.title" class="content-img">
+          </a>
+        </template>
       </li>
     </ul>
     <ul class="dot-list">
