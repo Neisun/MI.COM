@@ -123,7 +123,7 @@ export default {
               linkUrl: '//list.mi.com/135'
             }
           ],
-          rightGoods: [{
+          leftGoods: [{
               sourceUrl: '//www.mi.com/mj-powerstrip/',
               imgUrl: '//i3.mifile.cn/a4/xmad_14930201530354_orlGH.jpg'
             },
@@ -439,7 +439,7 @@ export default {
               linkUrl: '//list.mi.com/others'
             }
           ],
-          rightGoods: [{
+          leftGoods: [{
               sourceUrl: '//list.mi.com/30',
               imgUrl: 'http://i3.mifile.cn/a4/0ff2c84c-d0e6-4232-b0fb-2cebefd1a207'
             },
@@ -768,7 +768,7 @@ export default {
               linkUrl: '//list.mi.com/23'
             }
           ],
-          rightGoods: [{
+          leftGoods: [{
               sourceUrl: '//item.mi.com/1171700008.html',
               imgUrl: '//i3.mifile.cn/a4/xmad_14931820468436_uZfzY.jpg'
             },

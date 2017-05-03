@@ -15,7 +15,7 @@
     :headerData="componentGoodsData"
     @evtEnterActive="changeHeaderLink"></goodsComponentHeader>
   <div class="component-main">
-    <goodsLeft :goodsLeftData="componentGoodsData.rightGoods"></goodsLeft>
+    <goodsLeft :goodsLeftData="componentGoodsData.leftGoods"></goodsLeft>
     <goodsRight
       :goodsRightData="currData"
       :linkActiveUrl="linkActiveUrl"
