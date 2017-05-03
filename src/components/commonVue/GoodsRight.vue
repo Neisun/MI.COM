@@ -1,6 +1,5 @@
 <template>
 <div class="component-right">
-  
   <div class="">
     <ul class="component-right-list">
       <li class="component-right-list-item" v-for="(item,index) in goodsRightData" :key="index" v-if="index<goodsRightData.length-1">
