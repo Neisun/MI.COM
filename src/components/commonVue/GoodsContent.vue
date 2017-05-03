@@ -1,195 +1,403 @@
 <template>
-  <div class="content">
-    <div class="content-hd">
-      <h2 class="title">内容</h2>
-    </div>
-    <div class="content-box">
-      <ul class="content-list">
-        <li class="content-item">
-          <h2 class="title">
-            图书
-          </h2>
-          <div class="content-wrapper">
-            <ul class="content-item-list">
-              <li v-for="n in 3">
-                <h4 class="name">
-                  <a href="#">
-                    哈利·波特与被诅咒的孩子
-                  </a>
-                </h4>
-                <p class="desc">
-                  <a href="#">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本！</a>
-                </p>
-                <p class="price">
-                  <a href="#">29.37元</a>
-                </p>
-                <div class="figure">
-                  <a href="#">
-                    <img src="http://i3.mifile.cn/a4/5e5da924-84e3-4959-9e25-5891cdf30757" alt="">
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="wrapper-control">
-            <a href="javascript:void(0);" class="fa fa-angle-left control"></a>
-            <a href="javascript:void(0);" class="fa fa-angle-right control"></a>
-          </div>
-        </li>
-      </ul>
-    </div>
+<div class="content">
+  <div class="content-hd">
+    <h2 class="title">内容</h2>
   </div>
+  <div class="box-hd">
+    <ul class="content-list">
+      <!-- 我们把slide封装为一个组件，对这个silde组件进行循环 -->
+          <goodsContentSlide v-for="(item,index) in contents" :goodsContentSlideData="item" :key="index"></goodsContentSlide>
+    </ul>
+  </div>
+</div>
 </template>
 <script>
+import goodsContentSlide from '../commonVue/GoodsContentSlide.vue'
 export default {
   name: "content",
+  components: {
+    goodsContentSlide
+  },
   data: function data() {
     return {
-
+      // currPage:0,
+      contents: [
+        {
+          title: '图书',
+          type: 'book',
+          list: [{
+              sourceUrl: 'http://www.duokan.com/book/115222',
+              title: '哈利·波特与魔法石',
+              desc: '哈利波特来了',
+              imgUrl: '//i3.mifile.cn/a4/8e3584b6-3169-41c6-9356-939ec79aac2b',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://www.duokan.com/special/7812',
+              title: '特价专区',
+              desc: '精选畅销好书，特价促销，天天更新，天天特价！',
+              price: '限时优惠',
+              imgUrl: '//i3.mifile.cn/a4/T1dlVgBbbT1RXrhCrK.jpg',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://www.duokan.com/list/9-1',
+              title: '杂志专区',
+              desc: '纸媒杂志＋互联网杂志，你想看的这都有！',
+              price: '同步新刊上线',
+              imgUrl: '//i3.mifile.cn/a4/T1R3WgBjKT1RXrhCrK.jpg',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://www.duokan.com/list/1-1?from=xiaomi',
+              desc1: '海量好书，享受精品阅读时光',
+              desc2: '漂亮的中文排版，千万读者选择！',
+              btnTxt: '前往多看阅读',
+              price: '限时优惠',
+              imgUrl: '//s01.mifile.cn/i/index/more-duokan.jpg',
+              type: 2
+            }
+          ]
+        },
+        {
+          title: 'MIUI主题',
+          type: 'theme',
+          list: [{
+              sourceUrl: 'http://zhuti.xiaomi.com/detail/4ecf4ebb-7cba-4142-96aa-6b8deb2426ef',
+              title: '新世纪福音战士OL',
+              desc: 'EVA手游正版授权，同名主题，高能来袭！',
+              price: '免费',
+              imgUrl: 'http://i3.mifile.cn/a4/7d47dde1-60fb-4ff3-8fa1-364cfc452457',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://zhuti.xiaomi.com/detail/d6277519-ca46-420c-ab09-060f6d293f94',
+              title: '世界就在这里',
+              desc: '“青春的世界里，每一刻都要用尽全力欢呼”',
+              price: '免费',
+              imgUrl: 'http://i3.mifile.cn/a4/b2c8ca37-4ba8-4af8-b87e-91847980a278',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://zhuti.xiaomi.com/detail/13df18d4-e52c-4a61-82e3-97014f21bd77',
+              title: '不悔剑三',
+              desc: '精品剑网三同人主题 浪漫武侠 共闯天涯',
+              price: '3米币',
+              imgUrl: 'http://i3.mifile.cn/a4/10af68f9-3012-48bb-85b1-ad3b0646dfdb',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://zhuti.xiaomi.com/?from=mi',
+              desc1: '众多个性主题、百变锁屏与自由桌面',
+              desc2: '让你的手机与众不同！',
+              btnTxt: '前往MIUI主题市场',
+              price: '限时优惠',
+              imgUrl: '//s01.mifile.cn/i/index/more-duokan.jpg',
+              type: 2
+            }
+          ]
+        },
+        {
+          title: '游戏',
+          type: 'game',
+          list: [{
+              sourceUrl: 'http://ljm.mi.com/?channel=meng_1084_1_android',
+              title: '老九门',
+              desc: '盗墓笔记前传上线',
+              price: '免费',
+              imgUrl: 'http://i3.mifile.cn/a4/6032cb36-587f-4366-89ef-aefed2546552',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://game.xiaomi.com/miyou/index.html',
+              title: '米柚手游模拟器',
+              desc: '在电脑上玩遍小米所有手游',
+              price: '免费',
+              imgUrl: '//i3.mifile.cn/a4/T1czW_BXCv1R4cSCrK.png',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://game.xiaomi.com/app-appdetail--app_id__581412.html',
+              title: '剑侠情缘',
+              desc: '玩剑侠情缘手游，领666壕礼！！',
+              price: '免费',
+              imgUrl: 'http://i3.mifile.cn/a4/010948ae-bd48-49c6-af12-4ec8c4a0c829',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://game.xiaomi.com/index.php?c=index&a=run',
+              desc1: '免费下载海量的手机游戏',
+              desc2: '天天都有现金福利赠送',
+              btnTxt: '前往小米游戏商店',
+              price: '限时优惠',
+              imgUrl: '//s01.mifile.cn/i/index/more-game.jpg',
+              type: 2
+            }
+          ]
+        },
+        {
+          title: '应用',
+          type: 'app',
+          list: [{
+              sourceUrl: 'http://app.mi.com/subject/168797',
+              title: '2015年度应用',
+              desc: '2015年度应用',
+              price: '免费',
+              imgUrl: '//i3.mifile.cn/a4/T1YyJgBCYv1R4cSCrK.png',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://app.mi.com/subject/168798',
+              title: '2015年度游戏',
+              desc: '2015年度游戏',
+              price: '免费',
+              imgUrl: '//i3.mifile.cn/a4/T1eaxgB4Ev1R4cSCrK.png',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://app.mi.com/subject/167924',
+              title: '小米应用',
+              desc: '小米出品 必属精品',
+              price: '免费',
+              imgUrl: '//i3.mifile.cn/a4/T15VZvB5Kv1R4cSCrK.png',
+              type: 1
+            },
+            {
+              sourceUrl: 'http://app.mi.com/?from=mi',
+              desc1: '帮助小米手机和其他安卓手机用户',
+              desc2: '发现好用的安卓应用',
+              btnTxt: '前往小米应用商店',
+              price: '限时优惠',
+              imgUrl: '//s01.mifile.cn/i/index/more-app.jpg',
+              type: 2
+            }
+          ]
+        }
+      ]
     }
   }
 }
 </script>
 <style lang="less" scoped>
-  .content {
+.content {
     width: 1226px;
     margin-top: 26px;
     .content-hd {
-      height: 58px;
-      .title {
-        margin: 0;
-        font-size: 22px;
-        font-weight: 200;
-        line-height: 58px;
-        color: #333;
-      }
-    }
-    .content-box {
-      .content-list {
-        width: 1240px;
-        height: 420px;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        .content-item {
-          position: relative;
-          width: 296px;
-          height: 374px;
-          padding: 45px 0 0;
-          border-top: 1px solid #e0e0e0;
-          margin-right: 14px;
-          margin-bottom: 14px;
-          background: #fff;
-          -webkit-transition: all .2s linear;
-          transition: all .2s linear;
-          &:hover {
-            .control {
-              opacity: 1 !important;
-              background-color: rgba(66,66,66,1) !important;
-            }
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transform: translate3d(0, -2px, 0);
-          }
-          .title {
-            margin: 0 10px 18px;
-            font-size: 16px;
-            font-weight: 400;
-            text-align: center;
-          }
-          .content-wrapper {
-            height: 340px;
-            overflow: hidden;
-            .content-item-list {
-              height: 340px;
-              margin: 0;
-              padding: 0;
-              list-style-type: none;
-              text-align: center;
-              overflow: hidden;
-              color: #333;
-              display: flex;
-              justify-content: flex-start;
-              flex-flow: row nowrap;
-              li {
-                width: 296px;
-                height: 340px;
-                .name {
-                  margin: 0 20px 5px;
-                  font-size: 20px;
-                  font-weight: 400;
-                  line-height: 1.25;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  a {
-                    display: block;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    _zoom: 1;
-                    outline: none;
-                  }
-                }
-                .desc {
-                  margin: 0 48px 10px;
-                  height: 40px;
-                  font-size: 12px;
-                  line-height: 20px;
-                  text-align: center;
-                  overflow: hidden;
-                  a {
-                    color: #b0b0b0;
-                  }
-                }
-                .price {
-                  height: 21px;
-                  margin: 0 10px 15px;
-                  text-align: center;
-                  color: #333;
-                  font-size: 14px;
-                }
-                .figure {
-                  width: 216px;
-                  height: 154px;
-                  margin: 0 auto;
-                  a {
-                    display: block;
-                    height: 154px;
-                    img {
-                      width: 216px;
-                      height: 154px;
-                    }
-                  }
-                }
-              }
-            }
-          }
-          .wrapper-control {
-            .control {
-              position: absolute;
-              top: 50%;
-              margin-top: -20px;
-              opacity: 0;
-              -webkit-transition: all .6s;
-              transition: all .6s;
-              color: #fafafa;
-              width: 20px;
-              height: 24px;
-              padding: 12px 0;
-              font-size: 28px;
-              line-height: 24px;
-              background-color: rgba(66,66,66,0.2);
-              text-align: center;
-              &.fa-angle-left {
-                left: 0;
-              }
-              &.fa-angle-right {
-                right: 0;
-              }
-            }
-          }
+        height: 58px;
+        .title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 200;
+            line-height: 58px;
+            color: #333;
         }
-      }
     }
-  }
+    .box-hd {
+        .content-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            flex-flow: row nowrap;
+            // .content-wrap {
+            //     position: relative;
+            //     width: 296px;
+            //     height: auto;
+            //     margin: 0 14px 14px 0;
+            //     padding-top: 45px;
+            //     background: #fff;
+            //     transition: all 0.3s linear;
+            //     &:hover {
+            //         box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            //         transform: translate3d(0, -2px, 0);
+            //         .slide-next,
+            //         .slide-prev {
+            //             opacity: 0.5 !important;
+            //         }
+            //     }
+            //     &.book{
+            //         border-top: 1px solid #ffac13;
+            //     }
+            //     &.theme {
+            //         border-top: 1px solid #83c44e;
+            //     }
+            //     &.game {
+            //         border-top: 1px solid #e53935;
+            //     }
+            //     &.app {
+            //         border-top: 1px solid #2196f3;
+            //     }
+            //     .title {
+            //         margin: 0 10px 18px;
+            //         font-size: 16px;
+            //         font-weight: 400;
+            //         text-align: center;
+            //         &.book {
+            //           color: #ffac13;
+            //         }
+            //         &.theme {
+            //           color: #83c44e;
+            //         }
+            //         &.game {
+            //           color: #e53935;
+            //         }
+            //         &.app {
+            //           color: #2196f3;
+            //         }
+            //     }
+            //     .slide-wrap {
+            //         width: 296px;
+            //         height: 340px;
+            //         overflow: hidden;
+            //         .slide-next,
+            //         .slide-prev {
+            //             display: block;
+            //             width: 20px;
+            //             height: 46px;
+            //             line-height: 46px;
+            //             font-size: 15px;
+            //             text-align: center;
+            //             margin-top: -24px;
+            //             cursor: pointer;
+            //             z-index: 11;
+            //             background: #b0b0b0;
+            //             color: #fff;
+            //             opacity: 0;
+            //         }
+            //         .slide-prev {
+            //             position: absolute;
+            //             left: 0;
+            //             top: 50%;
+            //             transition: all 0.3s;
+            //             &:hover {
+            //                 opacity: 1 !important;
+            //             }
+            //         }
+            //         .slide-next {
+            //             position: absolute;
+            //             top: 50%;
+            //             transition: all 0.3s;
+            //             right: 0;
+            //             &:hover {
+            //                 opacity: 1 !important;
+            //             }
+            //         }
+            //         .sub-content {
+            //             width: 1200px;
+            //             height: 340px;
+            //             display: flex;
+            //             justify-content: flex-start;
+            //             flex-flow: row nowrap;
+            //             transition: all 0.5s ease;
+            //             .content-item {
+            //                 width: 296px;
+            //                 height: 340px;
+            //                 .subTitle {
+            //                     margin: 0 0 10px;
+            //                     font-weight: normal;
+            //                     font-size: 20px;
+            //                     text-align: center;
+            //                     color: #333;
+            //                 }
+            //                 .desc {
+            //                     margin: 0 48px 10px;
+            //                     height: 40px;
+            //                     font-size: 12px;
+            //                     line-height: 20px;
+            //                     text-align: center;
+            //                     overflow: hidden;
+            //                     // _zoom: 1;
+            //                     color: #b0b0b0;
+            //                 }
+            //                 .price {
+            //                     height: 21px;
+            //                     margin: 0 10px 15px;
+            //                     text-align: center;
+            //                     color: #333;
+            //                     font-size: 14px;
+            //                 }
+            //                 .content-img {
+            //                     display: block;
+            //                     width: 216px;
+            //                     height: 154px;
+            //                     margin: 0 auto;
+            //                 }
+            //                 .btn-txt {
+            //                     width: 130px;
+            //                     height: 30px;
+            //                     line-height: 30px;
+            //                     font-size: 12px;
+            //                     text-align: center;
+            //                     margin: 0 auto 14px;
+            //                     background: #fff;
+            //                     cursor: pointer;
+            //                     background: #fff;
+            //                     transition: all 0.3s ease;
+            //                     &.book {
+            //                       color: #ffac13;
+            //                       border: 1px solid #ffac13;
+            //                       &:hover {
+            //                         color: #fff;
+            //                         background: #ffac13;
+            //                       }
+            //                     }
+            //                     &.theme {
+            //                       color: #83c44e;
+            //                       border: 1px solid #83c44e;
+            //                       &:hover {
+            //                         color: #fff;
+            //                         background: #83c44e;
+            //                       }
+            //                     }
+            //                     &.game {
+            //                       color: #e53935;
+            //                       border: 1px solid #e53935;
+            //                       &:hover {
+            //                         color: #fff;
+            //                         background: #e53935;
+            //                       }
+            //                     }
+            //                     &.app {
+            //                       color: #2196f3;
+            //                       border: 1px solid #2196f3;
+            //                       &:hover {
+            //                         color: #fff;
+            //                         background: #2196f3;
+            //                       }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //         .dot-list {
+            //             position: absolute;
+            //             left: 50%;
+            //             bottom: 10px;
+            //             width: 150px;
+            //             margin-left: -75px;
+            //             .dot-item {
+            //                 width: 10px;
+            //                 height: 10px;
+            //                 padding: 10px;
+            //                 margin: 0 2px;
+            //                 display: inline-block;
+            //                 .dot {
+            //                     display: block;
+            //                     width: 6px;
+            //                     height: 6px;
+            //                     background-color: #b0b0b0;
+            //                     border: 2px solid #fff;
+            //                     border-radius: 50%;
+            //                     &.active {
+            //                         background: #fff;
+            //                         border: 2px solid #ff6700;
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+        }
+    }
+}
 </style>
