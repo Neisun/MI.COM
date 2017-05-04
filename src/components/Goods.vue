@@ -6,6 +6,7 @@
     <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
     <hotRemark></hotRemark>
     <goodsContent></goodsContent>
+    <videoComponent></videoComponent>
   </div>
 </div>
 </template>
@@ -15,6 +16,7 @@ import goodsComponent from './commonVue/GoodsComponent.vue'
 import starGoods from '../components/StarGoods.vue'
 import hotRemark from './commonVue/HotRemark.vue'
 import goodsContent from './commonVue/GoodsContent.vue'
+import videoComponent from './commonVue/VideoComponent.vue'
 export default {
   name: "goods",
   components: {
@@ -22,7 +24,8 @@ export default {
     goodsComponent,
     starGoods,
     hotRemark,
-    goodsContent
+    goodsContent,
+    videoComponent
   },
   data: function data() {
     return {

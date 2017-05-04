@@ -14,7 +14,7 @@
 <script>
 import goodsContentSlide from '../commonVue/GoodsContentSlide.vue'
 export default {
-  name: "content",
+  name: "goodsContent",
   components: {
     goodsContentSlide
   },
