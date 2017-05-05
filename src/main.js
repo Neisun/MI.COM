@@ -12,6 +12,7 @@ import 'animate.css/animate.css'
 
 import $ from 'jquery'
 
+import store from './vuex/store.js'
 Vue.config.productionTip = false
 Vue.use(vueResource);
 

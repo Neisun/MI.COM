@@ -19,7 +19,7 @@
           <a href="javascript:void(0);" class="img-wrap">
             <img :src="item.imgUrl" alt="">
             <span class="btn-play">
-              <i class="fa fa-play"></i>
+              <i class="fa fa-play" @click="playVideo(item.title,item.videoUrl,item.imgUrl)"></i>
             </span>
           </a>
           <!-- 卡片的标题 -->
