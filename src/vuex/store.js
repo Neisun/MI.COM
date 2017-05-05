@@ -10,15 +10,17 @@ const state = {
   videoOpt:{
     title:'',
     videoUrl:'',
-    imgUrl:''
+    imgUrl:'',
+    playStatus:false
   }
 }
 
 const mutations = {
-  playVideo:function (state,title,videoUrl,imgUrl) {
-    this.state.title = title
-    this.state.videoUrl = videoUrl
-    this.state.imgUrl = imgUrl
+  playVideo:function (state,data) {
+    state.videoOpt.title = data.title
+    state.videoOpt.videoUrl = data.videoUrl
+    state.videoOpt.imgUrl = data.imgUrl
+    state.videoOpt.playStatus = true
   }
 }
 

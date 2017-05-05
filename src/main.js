@@ -20,5 +20,6 @@ Vue.use(vueResource);
 new Vue({
   el: '#app',
   template: '<App/>',
-  components: { App }
+  components: { App },
+  store
 })

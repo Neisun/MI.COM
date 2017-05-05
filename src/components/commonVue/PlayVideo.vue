@@ -1,56 +1,63 @@
 <template>
   <!-- 遮罩层 -->
-<div class="video-panel" v-show="panelStatus">
+<div class="video-panel" v-show="this.playConfig.playStatus">
   <!-- 视频主体 -->
   <div class="video-content">
     <!-- 标题部分 -->
     <div class="video-content-hd">
       <h2 class="title">
-          听雷总讲述小米7年工艺探索之路
+          {{this.playConfig.title}}
       </h2>
       <i class="fa fa-times close-btn" @click="evtCancel"></i>
     </div>
-    <div class="video-content-main">
+    <div class="video-content-main" @click="evtControl">
       <video id="video"
         ref="video"
-        src="./static/1.mp4"
-        poster="http://i3.mifile.cn/a4/73d67577-cbc7-4bd0-8678-4b1e95f4f4dc"
+        :src="this.playConfig.videoUrl"
+        :poster="this.playConfig.imgUrl"
         preload="preload"
         controls="controls">
       </video>
-      <i class="fa fa-play play-btn" :class="{'fa-pause':playStatus}" @click="evtControl"></i>
+      <i class="fa fa-play play-btn" :class="{'fa-pause':!playStatus}"></i>
     </div>
   </div>
 </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 export default {
   name: "playVideo",
   data: function data() {
     return {
-      panelStatus:true,
-      playStatus:false,
+      // panelStatus:false,
+      playStatus:true,
     }
   },
-  props: {
-    playConfig:{
-      type:Object,
-      // required:true
-    }
+  // props: {
+  //   playConfig:{
+  //     type:Object,
+  //     // required:true
+  //   }
+  // },
+  computed:{
+    ...mapGetters({
+      playConfig:'getVideoOpt',
+    })
   },
   methods: {
     evtCancel: function () {
-      this.panelStatus = false;
-      this.$refs.video.pause()
+      this.playConfig.playStatus = false;
+      this.$refs.video.pause();
+      this.playStatus = true;
     },
     evtControl: function () {
       this.playStatus = !this.playStatus;
       if (this.playStatus) {
         // console.log(1);
-        this.$refs.video.play()
+        this.$refs.video.pause()
       }else if (!this.playStatus) {
         // console.log(2);
-        this.$refs.video.pause()
+        this.$refs.video.play()
       }
     }
   }

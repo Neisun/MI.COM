@@ -1,3 +1,3 @@
-export const playVideo = function ({commit,state}) {
-  commit('playVideo',title,videoUrl,imgUrl)
+export const playVideo = function ({commit,state},data) {
+  commit('playVideo',data)
 }

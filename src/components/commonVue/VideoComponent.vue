@@ -14,12 +14,12 @@
     <div class="video-content">
       <ul class="video-list">
         <!-- 每个卡片 -->
-        <li class="video-item" v-for="(item,index) in videos" :key="index">
+        <li class="video-item" v-for="(item,index) in videos" :key="index" @click="playVideo(item)">
           <!-- 每个卡片的图 -->
           <a href="javascript:void(0);" class="img-wrap">
             <img :src="item.imgUrl" alt="">
             <span class="btn-play">
-              <i class="fa fa-play" @click="playVideo(item.title,item.videoUrl,item.imgUrl)"></i>
+              <i class="fa fa-play"></i>
             </span>
           </a>
           <!-- 卡片的标题 -->
@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: "videoComponent",
   data: function data() {
@@ -69,6 +70,11 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    ...mapActions([
+      'playVideo'
+    ])
   }
 }
 </script>
