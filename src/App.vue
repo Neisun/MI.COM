@@ -7,7 +7,11 @@
   <topSub></topSub>
   <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
   <goods></goods>
+  <infoFooter></infoFooter>
+  <miFooter></miFooter>
+  <!-- 播放视频的组件 -->
   <playVideo></playVideo>
+
 </div>
 </template>
 <script>
@@ -19,6 +23,8 @@ import topSub from './components/TopSub.vue'
 import starGoods from './components/StarGoods.vue'
 import goods from './components/Goods.vue'
 import playVideo from './components/commonVue/PlayVideo.vue'
+import infoFooter from './components/InfoFooter.vue'
+import miFooter from './components/MiFooter.vue'
 export default {
   name: 'app',
   components: {
@@ -29,6 +35,8 @@ export default {
     topSub,
     starGoods,
     goods,
+    infoFooter,
+    miFooter,
     playVideo
   },
   data: function() {
