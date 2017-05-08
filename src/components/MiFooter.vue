@@ -6,7 +6,7 @@
     <div class="info-text">
       <!-- 链接 -->
       <p class="sites">
-        <tempalte v-for="(n,index) in nav">
+        <tempalte v-for="(n,index) in nav" :key="index">
           <a :href="n.sourceUrl" target="_blank">{{n.title}}</a>
           <span v-show="index<nav.length-1" class="sep">|</span>
         </tempalte>
@@ -172,7 +172,7 @@ export default {
     }
     // slogan标语
     .slogan {
-        width: 280px;
+        width: 290px;
         height: 19px;
         margin: 30px auto 0;
         text-align: center;
