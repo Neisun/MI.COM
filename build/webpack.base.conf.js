@@ -57,6 +57,7 @@ module.exports = {
       {// 对图片资源文件使用url-loader，query.name指明了输出的命名规则
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        // 给限制 10KB，不超过10Kb就转化为base64,超过10KB之后就，就是重输出的命名规则
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
@@ -65,6 +66,7 @@ module.exports = {
       {// 对字体资源文件使用url-loader，query.name指明了输出的命名规则
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
+        // 同上
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')

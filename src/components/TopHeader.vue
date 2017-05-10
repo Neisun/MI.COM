@@ -146,7 +146,7 @@ export default {
       clearTimeout(this.timer);
       // 获取焦点时候请求热搜词列表
       this.$http({
-        url:'/static/result.json',
+        url:'./static/result.json',
         method:'get'
       }).then((res) => {
         console.log(res);
