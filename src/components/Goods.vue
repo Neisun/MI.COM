@@ -2,6 +2,8 @@
 <div class="goods">
   <div class="container">
     <goodsHardWare></goodsHardWare>
+    <!-- 结构完全相同的，就创建一个goodsComponent组件，遍历一下即可 -->
+    <!-- 每一个goodsComponent的主要数据来源是这个遍历的item，里边包含着title，nav，leftgoods的图片，以及每个nav对应的商品列表，这是一个大的数据源 -->
     <goodsComponent v-for="(item,index) in goodsData" :key="index" :componentGoodsData="item"></goodsComponent>
     <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
     <hotRemark></hotRemark>

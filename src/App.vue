@@ -1,11 +1,18 @@
 <template>
 <div id="app">
+  <!-- 活动组件 -->
   <popular></popular>
+  <!-- 工具条组件 -->
   <topbar></topbar>
+  <!-- topHeader组件 -->
   <topHeader></topHeader>
+  <!-- side+轮播图组件 -->
   <topBanner></topBanner>
+  <!-- topSub组件 -->
   <topSub></topSub>
+  <!-- 明星产品组件 -->
   <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
+  <!-- 其他的关于产品方面的放在一个组件中 -->
   <goods></goods>
   <infoFooter></infoFooter>
   <miFooter></miFooter>
@@ -15,6 +22,7 @@
 </div>
 </template>
 <script>
+// 活动组件
 import popular from './components/Popular.vue'
 import topbar from './components/TopBar.vue'
 import topHeader from './components/TopHeader.vue'

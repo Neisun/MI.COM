@@ -1,5 +1,6 @@
 <template>
 <div class="hardware">
+  <!-- 标题 -->
   <div class="hardware-hd">
     <h2 class="title">智能硬件</h2>
     <div class="more brickNav">
@@ -9,7 +10,9 @@
           </a>
     </div>
   </div>
+  <!-- 商品主体部分 -->
   <div class="goods-content">
+    <!-- 左边图片部分，一张图占据半壁江山 -->
     <div class="goods-left">
       <a href="//www.mi.com/water2/" class="goods-left-link" target="_blank">
         <img src="//i3.mifile.cn/a4/xmad_14925012196936_zJvXi.jpg" alt="" class="goods-left-pic">
@@ -20,7 +23,7 @@
         <li class="goods-right-item" v-for="(item,index) in goods" :key="index">
           <div class="goods-right-item-link-wrap">
             <a :href="item.sourceUrl" class="goods-right-item-link" target="_blank">
-              <img :src="item.imgUrl" alt="" class="goods-right-item-pic">
+              <img :src="item.imgUrl" alt="item.title" class="goods-right-item-pic">
             </a>
           </div>
           <h3 class="title">
@@ -29,14 +32,14 @@
           <p class="desc">{{ item.desc }}</p>
           <p class="price">
             <span class="num">
-                {{ item.price }}
-              </span> 元
-            <template v-if="item.discountType==='discount'">
-              <span class="old-price">
-                {{ item.oldPrice }}
-              </span>
-            </template>
+                {{ item.price }}元
+            </span>
+            <!-- 这个位置是如果出现打折，那个字段，就把原价展示出来 -->
+            <span class="old-price" v-if="item.discountType==='discount'">
+              {{ item.oldPrice }}
+            </span>
           </p>
+          <!-- 这个位置，是新品，包邮，打折那个tips，背景颜色设置为白色之后，动态的绑定类名 -->
           <div class="flag" :class="item.discountType">
             {{item.discountContent}}
           </div>
@@ -130,7 +133,6 @@ export default {
         height: 58px;
     }
     .title {
-        // margin: 0;
         font-size: 22px;
         font-weight: 200;
         line-height: 58px;
@@ -239,7 +241,6 @@ export default {
                     }
                 }
                 .desc {
-                    // width: 214px;
                     text-align: center;
                     height: 18px;
                     font-size: 12px;
@@ -272,6 +273,7 @@ export default {
                     line-height: 20px;
                     text-align: center;
                     color: #fff;
+                    // tips的样式
                     &.discount {
                         background-color: #e53935;
                     }

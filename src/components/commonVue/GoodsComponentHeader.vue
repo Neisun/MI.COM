@@ -1,9 +1,14 @@
 <template>
   <div class="component-hd">
+    <!-- header组件的数据源，源自于goodsComponent中的数据源，而goodsComponent中的数据源来自good.vue中的遍历的item那个大数据源 -->
     <h2 class="title">{{headerData.title}}</h2>
     <div class="nav">
       <ul class="nav-list">
-        <li class="nav-list-item" v-for="(item,index) in headerData.nav" :key="index" :class="{active:activeStatus===item.type}" @mouseenter="evtEnterActive(item.type,item.name,item.linkUrl)">
+        <li
+          class="nav-list-item"
+          v-for="(item,index) in headerData.nav"
+          :key="index"
+          :class="{active:activeType===item.type}" @mouseenter="evtEnterActive(item.type,item.name,item.linkUrl)">
           {{item.name}}
         </li>
       </ul>
@@ -15,7 +20,7 @@ export default {
   name: "",
   data: function data() {
     return {
-      activeStatus: 'hot',
+      activeType: 'hot',
       linkMoreText: '热门',
       linkActiveUrl: '//list.mi.com/dapei'
     }
@@ -27,8 +32,10 @@ export default {
     }
   },
   methods: {
+    // 这是一个隐藏的比较有趣的功能，当在nav上划过时候，商品列表会跟着变化，还有一个位置也会发生变化，就是商品列表中最后一项，会把浏览更多的文字还有url跟着进行变化
+    // 所以这里采用事件监听的方式，把type,text,url传入，然后$emit出去，父组件接收之后做出相应的改变
     evtEnterActive: function(type, text, url) {
-      this.activeStatus = type
+      this.activeType = type
       this.linkMoreText = text
       this.linkActiveUrl = url
       this.$emit('evtEnterActive',type,text,url)

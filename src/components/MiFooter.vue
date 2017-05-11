@@ -6,10 +6,10 @@
     <div class="info-text">
       <!-- 链接 -->
       <p class="sites">
-        <tempalte v-for="(n,index) in nav" :key="index">
+        <template v-for="(n,index) in nav">
           <a :href="n.sourceUrl" target="_blank">{{n.title}}</a>
           <span v-show="index<nav.length-1" class="sep">|</span>
-        </tempalte>
+        </template>
       </p>
       <!-- 文本部分 -->
       <p class="text">
