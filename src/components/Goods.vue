@@ -6,7 +6,9 @@
     <!-- 结构完全相同的，就创建一个goodsComponent组件，遍历一下即可 -->
     <!-- 每一个goodsComponent的主要数据来源是这个遍历的item，里边包含着title，nav，leftgoods的图片，以及每个nav对应的商品列表，这是一个大的数据源 -->
     <goodsComponent v-for="(item,index) in goodsData" :key="index" :componentGoodsData="item"></goodsComponent>
-    <starGoods :title="starGoodsTitle" :starGoods="starGoodsList"></starGoods>
+    <!-- 与明星产品组件一样，所以直接使用那个组件，只不过是标题和轮播部分商品列表不一致 -->
+    <recommendComponent :title="starGoodsTitle" :starGoods="starGoodsList"></recommendComponent>
+    <!-- 热评产品 -->
     <hotRemark></hotRemark>
     <goodsContent></goodsContent>
     <videoComponent></videoComponent>
@@ -16,7 +18,7 @@
 <script>
 import goodsHardWare from './commonVue/GoodsHardWare.vue'
 import goodsComponent from './commonVue/GoodsComponent.vue'
-import starGoods from '../components/StarGoods.vue'
+import recommendComponent from '../components/StarGoods.vue'
 import hotRemark from './commonVue/HotRemark.vue'
 import goodsContent from './commonVue/GoodsContent.vue'
 import videoComponent from './commonVue/VideoComponent.vue'
@@ -25,7 +27,7 @@ export default {
   components: {
     goodsHardWare,
     goodsComponent,
-    starGoods,
+    recommendComponent,
     hotRemark,
     goodsContent,
     videoComponent

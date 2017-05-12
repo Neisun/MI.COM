@@ -5,36 +5,7 @@
   </div>
   <div class="hot-remark-main">
     <div class="hot-remark-list">
-      <!-- <div class="card">
-        <div class="hot-remark-item">
-          <div class="hot-remark-pic">
-            <a href="//www.mi.com/littleaudio/" target="_blank">
-              <img src="http://i3.mifile.cn/a4/bae79ac6-60d5-478d-90e7-ff1222764bd1" alt="">
-            </a>
-          </div>
-          <p class="review">
-            <a href="">
-              超级喜欢！小巧玲珑！音质完美！不知道为什么！只要是小米出的东西我都喜欢！那倒是因为那一句？？小米为发烧而生啊啊啊啊啊啊
-            </a>
-          </p>
-          <p class="author">
-            来自于 田密 的评价
-          </p>
-          <div class="info">
-            <h3 class="title">
-              <a href="#">
-                小米随身蓝牙音箱
-              </a>
-            </h3>
-            <span class="sep">|</span>
-            <p class="price">
-              <span class="num">
-                69元
-              </span>
-            </p>
-          </div>
-        </div>
-      </div> -->
+      <!-- card组件 -->
       <card :cardData="item" v-for="(item,index) in hotRemarkData.hotRemarkList" :key="index"></card>
     </div>
   </div>
@@ -56,6 +27,7 @@ export default {
             imgUrl: 'http://i3.mifile.cn/a4/bae79ac6-60d5-478d-90e7-ff1222764bd1',
             review: '超级喜欢！小巧玲珑！音质完美！不知道为什么！只要是小米出的东西我都喜欢！那倒是因为那一句？？小米为发...',
             title: '小米随身蓝牙音箱',
+            author:'随风',
             price: '69'
           },
           {
@@ -63,6 +35,7 @@ export default {
             imgUrl: 'http://i3.mifile.cn/a4/54e35fdd-bc68-4a89-bad7-c9c3bb2fc6fe',
             review: '包装很让人感动，式样也很可爱，做出的饭全家人都爱吃，超爱五星！手机控制还是不太熟练，最主要是没有连接...',
             title: '米家压力IH电饭煲',
+            author:'风声鹤唳',
             price: '999'
           },
           {
@@ -70,6 +43,7 @@ export default {
             imgUrl: 'http://i3.mifile.cn/a4/dc2b9fb7-5399-48cc-99d9-edea9fbfb9aa',
             review: '手机好用，反应快，价格适中，会常光顾，赞，五分好评！',
             title: '小米Max全网通版',
+            author:'linlin19891117',
             price: '1299'
           },
           {
@@ -77,6 +51,7 @@ export default {
             imgUrl: 'http://i3.mifile.cn/a4/62d44838-f464-4c11-887c-9168645ae797',
             review: '这箱子很好，外观漂亮，实用性强。很轻，有点软但不影响它的坚固。',
             title: '90分旅行箱 20寸',
+            author:'逆鳞',
             price: '299'
           }
         ]

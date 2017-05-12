@@ -8,23 +8,23 @@
     </div>
     <p class="review">
       <a :href="cardData.sourceUrl">
-          {{cardData.review}}
-        </a>
+        {{cardData.review}}
+      </a>
     </p>
     <p class="author">
-      {{cardData.author}}
+      来自于 {{cardData.author}} 的评价
     </p>
     <div class="info">
       <h3 class="title">
-          <a :href="cardData.sourceUrl">
-            {{cardData.title}}
-          </a>
+        <a :href="cardData.sourceUrl">
+          {{cardData.title}}
+        </a>
         </h3>
       <span class="sep">|</span>
       <p class="price">
         <span class="num">
-            {{cardData.price}}元
-          </span>
+          {{cardData.price}}元
+        </span>
       </p>
     </div>
   </div>
@@ -38,9 +38,9 @@ export default {
 
     }
   },
-  props:{
-    cardData:{
-      required:true
+  props: {
+    cardData: {
+      required: true
     }
   }
 }
@@ -57,8 +57,8 @@ export default {
         -webkit-transition: all 0.2s linear;
         transition: all 0.2s linear;
         &:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         .hot-remark-pic {
             width: 296px;
