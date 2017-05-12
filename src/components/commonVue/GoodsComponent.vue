@@ -49,6 +49,7 @@ export default {
       this.activeStatus = type
       this.linkMoreText = text
       this.linkActiveUrl = url
+      // 这个数据是给右边组件准备的，因为右边商品列表的组件会随着鼠标划过nav而发生相应的变化，根据子组件中事件的监听，把变化的type传递过来，再根据type来切换currData就行了
       this.currData = this.componentGoodsData[type]
     }
   }

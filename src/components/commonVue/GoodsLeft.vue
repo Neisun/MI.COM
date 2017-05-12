@@ -1,4 +1,5 @@
 <template>
+  <!-- 左边组件的数据源，同样是在goods中组件的大数据源的每一个对象item中的leftGoods对象 -->
   <div class="component-left">
     <ul class="component-left-list">
       <li class="component-left-list-item" v-for="(item,index) in goodsLeftData" :key="index">
@@ -11,7 +12,7 @@
 </template>
 <script>
 export default {
-  name: "component-left",
+  name: "componentLeft",
   data: function data() {
     return {
 
