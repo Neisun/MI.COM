@@ -7,16 +7,16 @@ Vue.use(Vuex);
 
 
 const state = {
-  videoOpt:{
-    title:'',
-    videoUrl:'',
-    imgUrl:'',
-    playStatus:false
+  videoOpt: {
+    title: '',
+    videoUrl: '',
+    imgUrl: '',
+    playStatus: false
   }
 }
 
 const mutations = {
-  playVideo:function (state,data) {
+  playVideo: function(state, data) {
     state.videoOpt.title = data.title
     state.videoOpt.videoUrl = data.videoUrl
     state.videoOpt.imgUrl = data.imgUrl

@@ -1,10 +1,13 @@
 <template>
-<!-- 此处加动画的原意是，遮罩层和视频盒子用的是一个状态显示条件，如果不给外边遮罩层加动画，遮罩层会迅速的消失，导致视频盒子消失的动画没发显示出来 -->
+<!-- 此处加动画的原意是，遮罩层和视频盒子用的是一个状态显示条件，如果不给外边遮罩层加动画，遮罩层会迅速的消失，导致视频盒子消失的动画没发显示出来 ，而且此处过渡时间需要比视频盒子动画稍微久一些-->
 <transition name="fade">
   <!-- 遮罩层 -->
   <div class="video-panel" v-show="this.playConfig.playStatus">
     <!--直接套用animate.css的样式了，懒得写了  -->
-    <transition name="slide" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
+    <transition
+      name="slide"
+      enter-active-class="animated fadeInDown"
+      leave-active-class="animated fadeOutUp">
       <!-- 视频主体 -->
       <div class="video-content" v-show="this.playConfig.playStatus">
         <!-- 标题部分 -->
@@ -15,7 +18,13 @@
           <i class="fa fa-times close-btn" @click="evtCancel"></i>
         </div>
         <div class="video-content-main" @click="evtControl">
-          <video id="video" ref="video" :src="this.playConfig.videoUrl" :poster="this.playConfig.imgUrl" preload="preload" controls="controls">
+          <video
+            id="video"
+            ref="video"
+            :src="this.playConfig.videoUrl"
+            :poster="this.playConfig.imgUrl"
+            preload="preload"
+            controls="controls">
         </video>
           <i class="fa fa-play play-btn" :class="{'fa-pause':!playStatus}"></i>
         </div>
