@@ -1,25 +1,34 @@
 <template>
+<!-- 每个slide组件的的border-top和字体颜色不同，使用type字段进行区分 -->
 <div class="content-wrap" :class="goodsContentSlideData.type">
-  <h2 class="title" :class="goodsContentSlideData.type">{{goodsContentSlideData.title}}</h2>
+  <!-- slide组件的头部，头部部分是不变的，不参与轮播，把参与轮播的部分放置到一个容器中 -->
+  <h2 class="title" :class="goodsContentSlideData.type">
+    {{goodsContentSlideData.title}}
+  </h2>
+  <!-- slide组件部分 -->
+  <!-- 轮播图视图容器，必须给他添加overflow:hidden,不然就漏出来了。。。 -->
   <div class="slide-wrap">
+    <!-- 后退按钮 -->
     <span class="slide-prev" @click="slidePrev()">
       <i class="fa fa-chevron-left"></i>
     </span>
+    <!-- 前进按钮 -->
     <span class="slide-next" @click="slideNext(goodsContentSlideData.list.length)">
       <i class="fa fa-chevron-right"></i>
     </span>
+    <!-- 轮播图容器 -->
+    <!-- 这里也是直接采用margin-left调整轮播图，这个方式也是相当不错的选择 -->
     <ul class="sub-content" :style="{'margin-left': currPage * (-296) +'px'}">
       <li class="content-item" v-for="(good,index) in goodsContentSlideData.list" :key="index">
-        <template v-if="good.type===1">
-          <a :href="good.sourceUrl" target="_blank">
+          <!-- 每个轮播图组，前几张的布局都是一致的，根据type来加以区分 -->
+          <a :href="good.sourceUrl" target="_blank" v-if="good.type===1">
             <h1 class="subTitle">{{good.title}}</h1>
             <p class="desc">{{good.desc}}</p>
             <p class="price">{{good.price}}</p>
             <img :src="good.imgUrl" :alt="good.title" class="content-img">
           </a>
-        </template>
-        <template v-if="good.type===2">
-          <a :href="good.sourceUrl" target="_blank">
+          <!-- type是2的时候就比较特殊 -->
+          <a :href="good.sourceUrl" target="_blank" v-if="good.type===2">
             <h1 class="subTitle">{{good.title}}</h1>
             <p class="desc">{{good.desc1}}</br>{{good.desc2}}</p>
             <p class="price">{{good.price}}</p>
@@ -28,12 +37,16 @@
             </a>
             <img :src="good.imgUrl" :alt="good.title" class="content-img">
           </a>
-        </template>
       </li>
     </ul>
+    <!-- 按钮组 -->
     <ul class="dot-list">
-      <li class="dot-item" v-for="(n,index) in goodsContentSlideData.list.length" :key="index" @click="changeSlide(index)">
-        <span class="dot" :class="{active:index===currPage}"></span>
+      <li
+        class="dot-item"
+        v-for="(n,index) in goodsContentSlideData.list.length"
+        :key="index"
+        @click="changeSlide(index)">
+        <span class="dot" :class="{'active':index===currPage}"></span>
       </li>
     </ul>
   </div>
@@ -54,20 +67,18 @@ export default {
   },
   methods: {
     slidePrev: function(index) {
-      // console.log('prev');
       this.currPage -= 1;
       if (this.currPage === -1) {
         this.currPage = 0;
       }
     },
     slideNext: function(num, index) {
-      // console.log('next');
       this.currPage += 1;
       if (this.currPage === num) {
         this.currPage = num - 1;
       }
     },
-    changeSlide: function (index) {
+    changeSlide: function(index) {
       this.currPage = index;
     }
   }
@@ -264,7 +275,7 @@ export default {
                     border: 2px solid #fff;
                     border-radius: 50%;
                     &:hover {
-                      background: #ff6700;
+                        background: #ff6700;
                     }
                     &.active {
                         background: #fff;

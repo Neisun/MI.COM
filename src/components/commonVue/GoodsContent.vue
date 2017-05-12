@@ -20,7 +20,6 @@ export default {
   },
   data: function data() {
     return {
-      // currPage:0,
       contents: [
         {
           title: '图书',
@@ -92,7 +91,7 @@ export default {
               desc2: '让你的手机与众不同！',
               btnTxt: '前往MIUI主题市场',
               price: '限时优惠',
-              imgUrl: '//s01.mifile.cn/i/index/more-duokan.jpg',
+              imgUrl: '//s01.mifile.cn/i/index/more-miui.jpg',
               type: 2
             }
           ]

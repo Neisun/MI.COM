@@ -10,6 +10,7 @@
     <recommendComponent :title="starGoodsTitle" :starGoods="starGoodsList"></recommendComponent>
     <!-- 热评产品 -->
     <hotRemark></hotRemark>
+    <!-- 内容区组件  一个头部+四个轮播部分，每一部分都是一个轮播图，所以把轮播图当单独提出来，当做一个组件 -->
     <goodsContent></goodsContent>
     <videoComponent></videoComponent>
   </div>
